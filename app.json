@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/vault/index",
+    "pages/bounty/index",
+    "pages/shop/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  },
+  "tabBar": {
+    "selectedColor": "#2E87E4",
+    "backgroundColor": "#ddd",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/vault/index",
+        "text": "宝贝箱"
+      },
+      {
+        "pagePath": "pages/bounty/index",
+        "text": "悬赏"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "text": "翻斗城"
+      }
+    ]
+  }
+}

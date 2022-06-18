@@ -1,0 +1,7 @@
+<!--components/bounty-item/index.wxml-->
+<van-swipe-cell id="{{name}}" right-width="{{ 65 }}" async-close bind:close="onClose">
+  <van-cell-group>
+    <van-cell title="{{ name }}" value="{{ bounty }}" />
+  </van-cell-group>
+  <view slot="right" class="delete">删除</view>
+</van-swipe-cell>

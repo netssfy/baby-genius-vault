@@ -1,0 +1,9 @@
+<!--pages/vault/index.wxml-->
+<van-tabs type="line" active="3">
+  <van-tab id="{{index}}" wx:for="{{baby}}" wx:key="index" title="{{index}}">{{item.test}}</van-tab>
+  <van-tab id="addBaby" title="➕">
+    <van-cell-group>
+      <van-field model:value="{{newBabyName}}" placeholder="宝贝昵称"></van-field>
+    </van-cell-group>
+  </van-tab>
+</van-tabs>

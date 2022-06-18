@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "bounty-item": "bounty-item/index"
+  }
+}

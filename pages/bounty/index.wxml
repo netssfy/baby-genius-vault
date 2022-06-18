@@ -1,0 +1,11 @@
+<!--pages/bounty/index.wxml-->
+
+<view wx:for="{{bountyItems}}" wx:key="index" bind:bounty-item-remove="onBountyItemRemove">
+  <bounty-item name="{{index}}" bounty="{{item}}" />
+</view>
+<van-cell-group class="add-bounty">
+  <van-field model:value="{{inputName}}" label="悬赏" required />
+  <van-field model:value="{{inputBounty}}" label="赏金" required bind:change="onValidateBounty"/>
+  <van-button type="primary" bind:click="onAddBountyClick">添加</van-button>
+</van-cell-group>
+<van-dialog id="van-dialog" />
