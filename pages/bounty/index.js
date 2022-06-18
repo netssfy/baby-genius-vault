@@ -10,20 +10,17 @@ Page({
   data: {
     inputName: null,
     inputBounty: null,
-    bountyItems: {
+    bountyItems: wx.getStorageSync('bountyItems') || {
       // name:bounty
-    }
+    },
+    baby: wx.getStorageSync('baby') || {},
+    selectedBaby: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // load bountyItems
-    this.data.bountyItems = wx.getStorageSync('bountyItems') || {};
-    this.setData({
-      bountyItems: this.data.bountyItems
-    });
   },
 
   /**
@@ -91,21 +88,24 @@ Page({
     var bountyItems = this.data.bountyItems;
     if (!name) {
       Dialog.alert({
-        message: '悬赏 不能为空'
+        message: '悬赏 不能为空',
+        selector: '#van-dialog-bounty'
       });
       return;
     }
 
     if (!bounty) {
       Dialog.alert({
-        message: '赏金 不能为空'
+        message: '赏金 不能为空',
+        selector: '#van-dialog-bounty'
       });
       return;
     }
 
     if (!!bountyItems[name]) {
       Dialog.alert({
-        message: `${name} 已经存在了`
+        message: `${name} 已经存在了`,
+        selector: '#van-dialog-bounty'
       });
       return;
     }
@@ -115,10 +115,52 @@ Page({
     this.syncBountyItems()
   },
 
+  async onBountyReward(event) {
+    var { name, bounty, at } = event.detail;
+    try {
+      await Dialog.confirm({
+        selector: '#reward-dialog',
+        title: '选择宝贝'
+      });
+    } catch {
+      return;
+    }
+
+    var babies = this.data.baby;
+    var selectedBaby = this.data.selectedBaby;
+    for (var babyName in selectedBaby) {
+      if (selectedBaby[babyName]) {
+        var baby = babies[babyName];
+        baby.bountyHistory.push({
+          name,
+          bounty,
+          at
+        });
+      }
+    }
+
+    this.syncBaby();
+  },
+
   syncBountyItems() {
     this.setData({
       bountyItems: this.data.bountyItems
     });
     wx.setStorageSync('bountyItems', this.data.bountyItems);
+  },
+
+  onSelectedBabyChange(event) {
+    var name = event.currentTarget.dataset.name;
+    this.data.selectedBaby[name] = !this.data.selectedBaby[name];
+    this.setData({
+      selectedBaby: this.data.selectedBaby
+    });
+  },
+
+  syncBaby() {
+    wx.setStorageSync('baby', this.data.baby);
+    this.setData({
+      baby: this.data.baby
+    })
   }
 })

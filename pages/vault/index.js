@@ -1,4 +1,7 @@
 // pages/vault/index.js
+
+import Dialog from '@vant/weapp/dialog/dialog'
+
 Page({
 
   /**
@@ -6,17 +9,10 @@ Page({
    */
   data: {
     newBabyName: null,
-    baby: {
-      吴双: {
-        test: '1111',
-        bountyHistory: [],
-        redeemHistory: []
-      },
-      吴彧: {
-        test: '22222',
-        bountyHistory: [],
-        redeemHistory: []
-      }
+    baby: wx.getStorageSync('baby') || {
+      // name: '',
+      // bountyHistory: [],
+      // redeemHistory: []
     }
   },
 
@@ -24,7 +20,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
   },
 
   /**
@@ -74,5 +69,49 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  async onRemovBabyClick(event) {
+    var baby = event.target.dataset.name;
+    try {
+      await Dialog.confirm({
+        selector: '#van-dialog-vault',
+        message: `确定删除宝贝[${baby}]吗？`
+      });
+    } catch {
+      return;
+    }
+    delete this.data.baby[baby];
+    this.syncBaby();
+  },
+  onAddBabyClick(event) {
+    var name = this.data.newBabyName;
+    if (!name) {
+      Dialog.alert({
+        selector: '#van-dialog-vault',
+        message: '宝贝昵称不能为空'
+      });
+      return;
+    }
+
+    if (!!this.data.baby[name]) {
+      Dialog.alert({
+        selector: '#van-dialog-vault',
+        message: `宝贝昵称[${name}]已经存在`
+      });
+      return;
+    }
+
+    this.data.baby[name] = {
+      name: name,
+      bountyHistory: [],
+      redeemHistory: []
+    };
+    this.syncBaby();
+  },
+  syncBaby() {
+    wx.setStorageSync('baby', this.data.baby);
+    this.setData({
+      baby: this.data.baby
+    })
   }
 })

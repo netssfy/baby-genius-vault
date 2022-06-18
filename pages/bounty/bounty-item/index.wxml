@@ -1,7 +1,14 @@
 <!--components/bounty-item/index.wxml-->
-<van-swipe-cell id="{{name}}" right-width="{{ 65 }}" async-close bind:close="onClose">
+<van-swipe-cell id='{{name}}' right-width='{{ 65 }}' async-close bind:close='onClose'>
   <van-cell-group>
-    <van-cell title="{{ name }}" value="{{ bounty }}" />
+    <van-cell>
+      <van-button type='info' size='small' style='margin-left: 30rpx;'>🏆 {{ name }}</van-button>
+      <van-button color='#ffd700' size='small' style='margin-left: 30rpx;'>💰 {{ bounty }}</van-button>
+      <van-button
+        type='primary' size='small' style='margin-left: 30rpx;' bind:click='onReward'
+        data-name='{{name}}'
+        data-bounty='{{bounty}}'>领赏</van-button>
+    </van-cell>
   </van-cell-group>
-  <view slot="right" class="delete">删除</view>
+  <view slot='right' class='delete'>删除</view>
 </van-swipe-cell>

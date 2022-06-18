@@ -34,7 +34,12 @@ Component({
         return;
       }
 
-      instance.triggerEvent("bounty-item-remove", id, { bubbles: true, composed:true });
+      instance.triggerEvent('bounty-item-remove', id, { bubbles: true, composed:true });
+    },
+    onReward(event) {
+      var data = event.currentTarget.dataset;
+      data['at'] = Date.now();
+      this.triggerEvent("bounty-reward", data, { bubbles: true, composed:true });
     }
   }
 })

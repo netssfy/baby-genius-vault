@@ -21,7 +21,10 @@
     "van-col": "@vant/weapp/col/index",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
   },
   "tabBar": {
     "selectedColor": "#2E87E4",

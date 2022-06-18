@@ -1,1 +1,7 @@
 /* pages/vault/index.wxss */
+
+.remove-bounty {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
