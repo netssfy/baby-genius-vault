@@ -1,6 +1,6 @@
 // pages/vault/index.js
 
-import Dialog from '@vant/weapp/dialog/dialog'
+import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
 
@@ -26,14 +26,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.data.baby = wx.getStorageSync('baby') || {};
+    this.setData({
+      baby: this.data.baby
+    });
   },
 
   /**

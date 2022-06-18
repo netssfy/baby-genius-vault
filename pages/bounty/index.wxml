@@ -1,21 +1,22 @@
 <!--pages/bounty/index.wxml-->
-
-<view wx:for='{{bountyItems}}' wx:key='index' 
+<scroll-view scroll-y='true' style='height:1020rpx' 
   bind:bounty-item-remove='onBountyItemRemove'
   bind:bounty-reward="onBountyReward">
-  <bounty-item name='{{index}}' bounty='{{item}}' />
-</view>
+  <bounty-item wx:for='{{bountyItems}}' wx:key='index' name='{{index}}' bounty='{{item}}' />
+</scroll-view>
+
 <van-cell-group class='add-bounty'>
   <van-field model:value='{{inputName}}' label='悬赏' required />
   <van-field model:value='{{inputBounty}}' label='赏金' required bind:change='onValidateBounty'/>
   <van-button type='primary' bind:click='onAddBountyClick' block='true'>添加</van-button>
 </van-cell-group>
 <van-dialog id='van-dialog-bounty' />
+
 <van-dialog 
   id='reward-dialog'
   use-slot>
   <van-cell-group>
-    <van-cell wx:for='{{ baby }}' wx:key='{{ index }}'>
+    <van-cell wx:for='{{ baby }}' wx:key='index'>
       <van-checkbox 
         value='{{ selectedBaby[index] }}'
         bind:change='onSelectedBabyChange'
@@ -24,3 +25,4 @@
     </van-cell>
   </van-cell-group>
 </van-dialog>
+<van-toast id="reward-success" />

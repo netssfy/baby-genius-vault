@@ -1,6 +1,7 @@
 // pages/bounty/index.js
 
-import Dialog from '@vant/weapp/dialog/dialog'
+import Dialog from '@vant/weapp/dialog/dialog';
+import Toast from '@vant/weapp/toast/toast';
 
 Page({
 
@@ -71,7 +72,16 @@ Page({
   onShareAppMessage() {
 
   },
-  onBountyItemRemove(event) {
+  async onBountyItemRemove(event) {
+    try {
+      await Dialog.confirm({
+        message: `确定删除[${event.detail}]吗？`,
+        selector: '#van-dialog-bounty'
+      });
+    } catch {
+      return;
+    }
+
     var name = event.detail;
     delete this.data.bountyItems[name];
     this.syncBountyItems();
@@ -128,6 +138,7 @@ Page({
 
     var babies = this.data.baby;
     var selectedBaby = this.data.selectedBaby;
+    var hasBabyReward = false;
     for (var babyName in selectedBaby) {
       if (selectedBaby[babyName]) {
         var baby = babies[babyName];
@@ -136,10 +147,17 @@ Page({
           bounty,
           at
         });
+        hasBabyReward = true;
       }
     }
 
-    this.syncBaby();
+    if (hasBabyReward) {
+      this.syncBaby();
+      Toast.success({
+        message: '领赏成功',
+        selector: '#reward-success'
+      });
+    }
   },
 
   syncBountyItems() {

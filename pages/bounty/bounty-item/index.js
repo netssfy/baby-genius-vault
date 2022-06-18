@@ -1,6 +1,7 @@
 // components/bounty-item/index.js
 
-import Dialog from '@vant/weapp/dialog/dialog'
+import Dialog from '@vant/weapp/dialog/dialog';
+import moment from 'moment';
 
 Component({
   /**
@@ -25,20 +26,11 @@ Component({
     async onClose(event) {
       const { instance } = event.detail;
       const id = event.currentTarget.id;
-
-      try {
-        await Dialog.confirm({
-          message: `确定删除[${id}]吗？`
-        });
-      } catch (e) {
-        return;
-      }
-
       instance.triggerEvent('bounty-item-remove', id, { bubbles: true, composed:true });
     },
     onReward(event) {
       var data = event.currentTarget.dataset;
-      data['at'] = Date.now();
+      data['at'] = moment().format('yyyy-MM-DD HH:mm');
       this.triggerEvent("bounty-reward", data, { bubbles: true, composed:true });
     }
   }
