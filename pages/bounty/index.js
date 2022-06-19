@@ -12,7 +12,7 @@ Page({
     inputName: null,
     inputBounty: null,
     bountyItems: wx.getStorageSync('bountyItems') || {
-      // name:bounty
+      // name:{ name, bounty }
     },
     baby: wx.getStorageSync('baby') || {},
     selectedBaby: {}
@@ -35,7 +35,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.data.baby = wx.getStorageSync('baby') || {};
+    this.setData({
+      baby: this.data.baby
+    });
   },
 
   /**
@@ -120,7 +123,7 @@ Page({
       return;
     }
 
-    bountyItems[name] = bounty;
+    bountyItems[name] = { name, bounty};
 
     this.syncBountyItems()
   },
@@ -142,7 +145,8 @@ Page({
     for (var babyName in selectedBaby) {
       if (selectedBaby[babyName]) {
         var baby = babies[babyName];
-        baby.bountyHistory.push({
+        baby.totalBounty += bounty;
+        baby.bountyHistory.unshift({
           name,
           bounty,
           at
@@ -154,7 +158,7 @@ Page({
     if (hasBabyReward) {
       this.syncBaby();
       Toast.success({
-        message: '领赏成功',
+        message: `领赏成功 ➕${bounty}`,
         selector: '#reward-success'
       });
     }

@@ -11,6 +11,7 @@ Page({
     newBabyName: null,
     baby: wx.getStorageSync('baby') || {
       // name: '',
+      // totalBounty: 100,
       // bountyHistory: [],
       // redeemHistory: []
     }
@@ -105,6 +106,7 @@ Page({
 
     this.data.baby[name] = {
       name: name,
+      totalBounty: 0,
       bountyHistory: [],
       redeemHistory: []
     };

@@ -2,7 +2,7 @@
 <scroll-view scroll-y='true' style='height:1020rpx' 
   bind:bounty-item-remove='onBountyItemRemove'
   bind:bounty-reward="onBountyReward">
-  <bounty-item wx:for='{{bountyItems}}' wx:key='index' name='{{index}}' bounty='{{item}}' />
+  <bounty-item wx:for='{{bountyItems}}' wx:key='index' name='{{index}}' bounty='{{item.bounty}}' />
 </scroll-view>
 
 <van-cell-group class='add-bounty'>

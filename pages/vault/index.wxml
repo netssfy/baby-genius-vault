@@ -3,9 +3,12 @@
   <van-tabs type='line' color='#2ecd06'>
     <van-cell></van-cell>
     <van-tab id='{{index}}' wx:for='{{baby}}' wx:key='index' title='{{index}}'>
+      <van-cell>
+        <van-tag type='success' size='large'>💰 {{item.totalBounty}}</van-tag>
+      </van-cell>
       <van-tabs type='card'  color='#1989fa'>
         <van-tab title='领赏记录'>
-          <scroll-view scroll-y='true' style='height:1000rpx'>
+          <scroll-view scroll-y='true' style='height:960rpx;'>
             <van-cell wx:for='{{baby[index].bountyHistory}}' wx:key='index'>
               <van-button color='#87aee7' size='small' style='margin-left: 30rpx;'>🏆 {{ item.name }}</van-button>
               <van-button color='#e5c10f' size='small' style='margin-left: 30rpx;'>💰 {{ item.bounty }}</van-button>
@@ -16,7 +19,12 @@
         <van-tab title='兑换记录'>
         </van-tab>
       </van-tabs>
-      <van-button data-name='{{index}}' class='remove-bounty' type='danger' bind:click='onRemovBabyClick' block='true' >删除</van-button>
+      <van-button
+        data-name='{{index}}'
+        class='remove-bounty'
+        type='warning'
+        bind:click='onRemovBabyClick'
+        block='true'>删除宝贝</van-button>
     </van-tab>
     <van-tab id='addBaby' title='➕'>
       <van-cell-group>

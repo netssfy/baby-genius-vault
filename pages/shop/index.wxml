@@ -1,2 +1,43 @@
 <!--pages/shop/index.wxml-->
-shop
+<scroll-view scroll-y='true' style='height:1020rpx'>
+  <van-swipe-cell
+    wx:for='{{products}}' wx:key='index'
+    id='{{item.name}}'
+    right-width='{{ 65 }}'
+    async-close
+    bind:close='onProductItemRemove'>
+    <van-cell-group>
+      <van-cell>
+        <van-button color='#87aee7' size='small' style='margin-left: 30rpx;'>🛍️ {{ item.name }}</van-button>
+        <van-button color='#e5c10f' size='small' style='margin-left: 30rpx;'>💰 {{ item.bounty }}</van-button>
+        <van-button
+          type='primary' size='small' style='margin-left: 30rpx;' bind:click='onProductRedeem'
+          data-name='{{item.name}}'
+          data-bounty='{{item.bounty}}'>兑换</van-button>
+      </van-cell>
+    </van-cell-group>
+    <view slot='right' class='delete'>删除</view>
+  </van-swipe-cell>
+</scroll-view>
+
+<van-cell-group class='add-product'>
+  <van-field model:value='{{inputName}}' label='商品名' required />
+  <van-field model:value='{{inputBounty}}' label='赏金' required bind:change='onValidateBounty'/>
+  <van-button type='primary' bind:click='onAddProductClick' block='true'>添加</van-button>
+</van-cell-group>
+<van-dialog id='van-dialog-product' />
+
+<van-dialog 
+  id='redeem-dialog'
+  use-slot>
+  <van-cell-group>
+    <van-cell wx:for='{{ baby }}' wx:key='index'>
+      <van-checkbox 
+        value='{{ selectedBaby[index] }}'
+        bind:change='onSelectedBabyChange'
+        data-name='{{ index }}'>{{ index }}
+      </van-checkbox>
+    </van-cell>
+  </van-cell-group>
+</van-dialog>
+<van-toast id="redeem-success" />
