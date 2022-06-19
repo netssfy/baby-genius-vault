@@ -1,6 +1,8 @@
 // pages/shop/index.js
 import Dialog from '@vant/weapp/dialog/dialog';
 import Toast from '@vant/weapp/toast/toast';
+import moment from 'moment';
+
 Page({
 
   /**
@@ -96,7 +98,7 @@ Page({
   },
   onAddProductClick() {
     var name = this.data.inputName;
-    var bounty = this.data.inputBounty;
+    var bounty = parseInt(this.data.inputBounty);
     var products = this.data.products;
     if (!name) {
       Dialog.alert({
@@ -127,7 +129,9 @@ Page({
     this.syncProducts()
   },
   async onProductRedeem(event) {
-    var { name, bounty, at } = event.currentTarget.dataset;
+    var { name, bounty } = event.currentTarget.dataset;
+    var at = moment().format('yyyy-MM-DD HH:mm');
+
     try {
       await Dialog.confirm({
         selector: '#redeem-dialog',
@@ -171,7 +175,7 @@ Page({
     if (hasBabyRedeem) {
       this.syncBaby();
       Toast.success({
-        message: `兑换成功 ➖${bounty}`,
+        message: `兑换成功 -${bounty}`,
         selector: '#redeem-success'
       });
     }

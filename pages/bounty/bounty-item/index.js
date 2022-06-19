@@ -1,6 +1,5 @@
 // components/bounty-item/index.js
 
-import Dialog from '@vant/weapp/dialog/dialog';
 import moment from 'moment';
 
 Component({

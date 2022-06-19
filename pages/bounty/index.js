@@ -97,7 +97,7 @@ Page({
   },
   onAddBountyClick() {
     var name = this.data.inputName;
-    var bounty = this.data.inputBounty;
+    var bounty = parseInt(this.data.inputBounty);
     var bountyItems = this.data.bountyItems;
     if (!name) {
       Dialog.alert({
@@ -130,6 +130,7 @@ Page({
 
   async onBountyReward(event) {
     var { name, bounty, at } = event.detail;
+    
     try {
       await Dialog.confirm({
         selector: '#reward-dialog',
@@ -158,7 +159,7 @@ Page({
     if (hasBabyReward) {
       this.syncBaby();
       Toast.success({
-        message: `领赏成功 ➕${bounty}`,
+        message: `领赏成功 +${bounty}`,
         selector: '#reward-success'
       });
     }
