@@ -33,9 +33,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.data.baby = wx.getStorageSync('baby') || {};
     this.setData({
-      baby: this.data.baby
+      baby: wx.getStorageSync('baby') || {}
     });
   },
 

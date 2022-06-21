@@ -2,10 +2,10 @@
 <van-swipe-cell id='{{name}}' right-width='{{ 65 }}' async-close bind:close='onClose'>
   <van-cell-group>
     <van-cell>
-      <van-button color='#87aee7' size='small' style='margin-left: 30rpx;'>🏆 {{ name }}</van-button>
-      <van-button color='#e5c10f' size='small' style='margin-left: 30rpx;'>💰 {{ bounty }}</van-button>
+      <van-button color='#87aee7' size='small' style='margin-left: 15rpx;'>🏆 {{ name }}</van-button>
+      <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ bounty }}</van-button>
       <van-button
-        type='primary' size='small' style='margin-left: 30rpx;' bind:click='onReward'
+        type='primary' size='small' style='margin-left: 15rpx;' bind:click='onReward'
         data-name='{{name}}'
         data-bounty='{{bounty}}'>领赏</van-button>
     </van-cell>

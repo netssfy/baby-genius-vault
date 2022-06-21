@@ -2,7 +2,8 @@
   "pages": [
     "pages/vault/index",
     "pages/bounty/index",
-    "pages/shop/index"
+    "pages/shop/index",
+    "pages/ieport/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -33,7 +34,7 @@
     "list": [
       {
         "pagePath": "pages/vault/index",
-        "text": "宝贝箱"
+        "text": "宝贝的台账"
       },
       {
         "pagePath": "pages/bounty/index",
@@ -42,6 +43,10 @@
       {
         "pagePath": "pages/shop/index",
         "text": "小卖部"
+      },
+      {
+        "pagePath": "pages/ieport/index",
+        "text": "导入/导出"
       }
     ]
   }

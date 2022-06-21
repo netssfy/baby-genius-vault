@@ -1,0 +1,41 @@
+<!--pages/settings/index.wxml-->
+<van-tabs type='card' color='#1762d9'>
+  <van-tab title='导入'>
+    <van-cell>
+      <van-button type='primary' size='large' bind:click='onImportPreview'>从剪贴板导入预览</van-button>
+    </van-cell>
+    <scroll-view scroll-y='true' style='height:960rpx;'>
+      <van-cell wx:for='{{baby}}' wx:key='index'>
+        <van-button color='#4286F3' size='small' style='margin-left: 15rpx;'>👶 {{ item.name }}</van-button>
+        <van-button color='#FAC230' size='small' style='margin-left: 15rpx;'>💰💰 {{ item.totalBounty }}</van-button>
+        <van-button color='#EB4537' size='small' style='margin-left: 15rpx;'>
+        🏆🏆 {{ item.bountyHistory.length }}
+        </van-button>
+        <van-button color='#55AF7B' size='small' style='margin-left: 15rpx;'>
+        🛍️🛍️ {{ item.redeemHistory.length }}
+        </van-button>
+      </van-cell>
+      <van-cell wx:for='{{bountyItems}}' wx:key='index'>
+        <van-button color='#87aee7' size='small' style='margin-left: 15rpx;'>🏆 {{ item.name }}</van-button>
+        <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ item.bounty }}</van-button>
+      </van-cell>
+      <van-cell wx:for='{{products}}' wx:key='index'>
+        <van-button color='#87aee7' size='small' style='margin-left: 15rpx;'>🛍️ {{ item.name }}</van-button>
+        <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ item.bounty }}</van-button>
+      </van-cell>
+    </scroll-view>
+    <van-cell>
+      <van-button wx:if="{{ !! baby && !!bountyItems && !!products }}" type='primary' size='large' bind:click='onImportClick'>导入</van-button>
+    </van-cell>
+  </van-tab>
+  <van-tab title='导出'>
+    <van-cell>
+      <van-button type='primary' size='large' bind:click='onExportClick'>导出到剪贴板</van-button>
+    </van-cell>
+    <van-cell>
+      <van-button type='danger' size='large' bind:click='onClearAll'>清空数据</van-button>
+    </van-cell>
+  </van-tab>
+</van-tabs>
+<van-dialog id="van-dialog-ieport" />
+<van-toast id="ieport-toast" />

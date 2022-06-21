@@ -8,10 +8,10 @@
     bind:close='onProductItemRemove'>
     <van-cell-group>
       <van-cell>
-        <van-button color='#87aee7' size='small' style='margin-left: 30rpx;'>🛍️ {{ item.name }}</van-button>
-        <van-button color='#e5c10f' size='small' style='margin-left: 30rpx;'>💰 {{ item.bounty }}</van-button>
+        <van-button color='#87aee7' size='small' style='margin-left: 15rpx;'>🛍️ {{ item.name }}</van-button>
+        <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ item.bounty }}</van-button>
         <van-button
-          type='primary' size='small' style='margin-left: 30rpx;' bind:click='onProductRedeem'
+          type='primary' size='small' style='margin-left: 15rpx;' bind:click='onProductRedeem'
           data-name='{{item.name}}'
           data-bounty='{{item.bounty}}'>兑换</van-button>
       </van-cell>
