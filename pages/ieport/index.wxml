@@ -24,7 +24,7 @@
         <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ item.bounty }}</van-button>
       </van-cell>
     </scroll-view>
-    <van-cell>
+    <van-cell style="position: fixed; bottom: 0; width: 100%;">
       <van-button wx:if="{{ !! baby && !!bountyItems && !!products }}" type='primary' size='large' bind:click='onImportClick'>导入</van-button>
     </van-cell>
   </van-tab>
