@@ -1,5 +1,5 @@
 <!--pages/shop/index.wxml-->
-<scroll-view scroll-y='true' style='height:1020rpx'>
+<scroll-view scroll-y='true' class='product-list-scoll'>
   <van-swipe-cell
     wx:for='{{products}}' wx:key='index'
     id='{{item.name}}'

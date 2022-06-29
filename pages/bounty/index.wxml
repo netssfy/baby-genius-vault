@@ -1,5 +1,5 @@
 <!--pages/bounty/index.wxml-->
-<scroll-view scroll-y='true' style='height:1020rpx' 
+<scroll-view scroll-y='true' class='bounty-list-scoll'
   bind:bounty-item-remove='onBountyItemRemove'
   bind:bounty-reward="onBountyReward">
   <bounty-item wx:for='{{bountyItems}}' wx:key='index' name='{{index}}' bounty='{{item.bounty}}' />

@@ -6,9 +6,9 @@
       <van-cell>
         <van-tag type='success' size='large'>💰 {{item.totalBounty}}</van-tag>
       </van-cell>
-      <van-tabs type='card'  color='#1989fa'>
-        <van-tab title='领赏记录 ({{baby[index].bountyHistory.length}})'>
-          <scroll-view scroll-y='true' style='height:960rpx;'>
+      <van-tabs type='card' color='#1989fa'>
+        <van-tab title='领赏记录 ({{baby[index].bountyHistory.length}})' class='vault-list'>
+          <scroll-view scroll-y='true'>
             <van-cell wx:for='{{baby[index].bountyHistory}}' wx:key='index'>
               <van-button color='#87aee7' size='small' style='margin-left: 15rpx;'>🏆 {{ item.name }}</van-button>
               <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ item.bounty }}</van-button>
@@ -16,8 +16,8 @@
             </van-cell>
           </scroll-view>
         </van-tab>
-        <van-tab title='兑换记录 ({{baby[index].redeemHistory.length}})'>
-          <scroll-view scroll-y='true' style='height:960rpx;'>
+        <van-tab title='兑换记录 ({{baby[index].redeemHistory.length}})' class='vault-list'>
+          <scroll-view scroll-y='true'>
             <van-cell wx:for='{{baby[index].redeemHistory}}' wx:key='index'>
               <van-button color='#87aee7' size='small' style='margin-left: 15rpx;'>🛍️ {{ item.name }}</van-button>
               <van-button color='#e5c10f' size='small' style='margin-left: 15rpx;'>💰 {{ item.bounty }}</van-button>

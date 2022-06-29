@@ -15,4 +15,9 @@
   position: fixed;
   bottom: 0px;
   width: 100%;
+  max-height: 140px;
+}
+
+.product-list-scoll {
+  height: calc(100vh - 140px)
 }
